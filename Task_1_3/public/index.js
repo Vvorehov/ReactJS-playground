@@ -4,7 +4,7 @@ const Temp = (props) => {
 
 class App extends React.PureComponent {
     state = {
-        val: "Hello world Pure"
+        val: "Hello world PureComponent"
     };
     render() {
         return (
@@ -14,3 +14,5 @@ class App extends React.PureComponent {
         );
     }
 };
+
+ReactDOM.render(<App/>, document.getElementById('container'));

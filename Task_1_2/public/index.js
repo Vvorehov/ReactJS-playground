@@ -4,14 +4,9 @@ class App extends React.Component {
     }
     render() {
         return(
-            <h1>Hello world React component</h1>
+          <h1>Hello World React component</h1>
         )
     }
 }
-
-const styles = {
-    fontFamily: "sans-serif",
-    textAlign: "center"
-};
 
 ReactDOM.render(<App />, document.getElementById('container'));
