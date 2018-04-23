@@ -24,6 +24,7 @@ const uglifyJsPlugin = new UglifyJsPlugin({
 
 
 module.exports = (env) => {
+  const isProduction = env.NODE_ENV == "production";
   let config = {
     entry: "./src/index.js",
     output: {
@@ -60,10 +61,10 @@ module.exports = (env) => {
         }
       ]
     },
-    devtool: env.NODE_ENV == "production" ? "source-map" : "eval",
+    devtool: isProduction ? "source-map" : "eval",
     optimization: {
-      minimize: false,
-      minimizer: env.NODE_ENV == "production" ? [uglifyJsPlugin] : []
+      minimize: isProduction,
+      minimizer: isProduction ? [uglifyJsPlugin] : []
     }
   };
   return config;

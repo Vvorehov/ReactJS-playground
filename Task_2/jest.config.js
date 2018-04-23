@@ -12,7 +12,7 @@ module.exports = {
     "node_modules/(?!(jest-)?react-native|react-navigation)"
   ],
   "roots": [
-    "./tests"
+    "__tests__"
   ],
   "testRegex": ".*.test.js",
   "verbose": true
