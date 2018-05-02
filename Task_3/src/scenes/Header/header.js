@@ -1,11 +1,13 @@
 import React from "react";
-import { render } from "react-dom";
-import { Search } from "./components/Search"
+import { Search, FilmInfo, HeaderTop } from "./components";
+
+import "./styles.scss";
 
 const Header = () => {
-    return <header>
-        <h1>Find your movie</h1>
+    return <header id="header">
+        <HeaderTop />
         <Search />
+        <FilmInfo id="284054" />
     </header>;
 };
 

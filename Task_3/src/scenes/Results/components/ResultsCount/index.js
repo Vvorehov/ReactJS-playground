@@ -1,1 +1,1 @@
-export { default as SearchButton } from './SearchButton';
+export { default as ResultsCount } from './ResultsCount';
