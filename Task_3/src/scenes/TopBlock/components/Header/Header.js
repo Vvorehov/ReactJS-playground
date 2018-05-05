@@ -2,11 +2,11 @@ import React from "react";
 import { Logo } from "../../../Logo";
 import "./styles.scss";
 
-const HeaderTop = () => {
-  return <div className="header-top">
+const Header = () => {
+  return <header id="header" className="header-top">
     <Logo siteName='netflixroulette'/>
     <a className="backToHome" href="/">Search</a>
-  </div>;
+  </header>;
 };
 
-export default HeaderTop;
+export default Header;

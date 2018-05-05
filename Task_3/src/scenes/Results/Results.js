@@ -3,13 +3,13 @@ import { ResultsBody, ResultsCount, ResultsSort } from "./components/";
 import "./styles.scss";
 
 const Results = () => {
-  return <div className="results">
+  return <main className="results">
     <div className="results-panel">
       <ResultsCount items="10" />
       <ResultsSort />
     </div>
     <ResultsBody />
-  </div>
+  </main>
 };
 
 export default Results;

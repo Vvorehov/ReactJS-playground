@@ -1,3 +1,3 @@
 export { FilmInfo } from './FilmInfo';
 export { Search } from './Search';
-export { HeaderTop } from './HeaderTop';
+export { Header } from './Header';
