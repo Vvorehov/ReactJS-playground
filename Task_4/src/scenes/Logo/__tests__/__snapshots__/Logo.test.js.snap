@@ -1,0 +1,5 @@
+exports['renders correctly Logo'] = `
+<div class="siteLogo">
+Logo
+</div>
+`;

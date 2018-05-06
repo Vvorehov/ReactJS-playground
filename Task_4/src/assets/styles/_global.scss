@@ -1,0 +1,56 @@
+/* Fonts */
+
+:root {
+  font-size: 62.5%;
+}
+
+body, html {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.6rem;
+}
+
+/* Buttons */
+.btn {
+  padding: 5px 20px;
+  border: none;
+  background: #3C3D3B;
+  color: #fff;
+  font-size: 14px;
+  margin-left: 15px;
+  text-transform: uppercase;
+}
+
+.btn--active {
+  background: #ED5664;
+}
+
+.btn--big {
+  padding: 10px 40px;
+}
+
+.link-btn {
+  font-size: 12px;
+  color: #A8A8A9;
+}
+
+.link-btn--active {
+  color: #ED5664;
+}
+
+.clear-fix {
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+#top-block {
+  padding: 1rem 6rem 2rem;
+  background: url("./../../assets/images/header_bg.jpg") no-repeat 0 0;
+  background-size: cover;
+  color: #fff;
+}

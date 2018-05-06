@@ -1,0 +1,67 @@
+$brandColor: #ED5664;
+$secondaryColor: #BDBBBE;
+
+.radio {
+  display: inline-block;
+  max-width: 100%;
+  font-size: 1.4rem;
+  > input {
+    display: none;
+  }
+  > span {
+    position: relative;
+    display: inline-block;
+    font-size: inherit;
+    padding: .5em 1em;
+    line-height: 1;
+    border: 0;
+    outline: 0;
+    border-radius: 2px;
+    box-shadow: none;
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition-property: color, background;
+    transition-duration: .2s;
+    transition-timing-function: ease-out;
+    // prevent
+    user-select: none;
+    appearance: none;
+    &:focus {
+      outline: 1px solid rgba($brandColor, .5);
+    }
+    &:hover,
+    &:active {
+      background-color: $brandColor;
+    }
+  }
+  > input:checked + span {
+    background-color: $brandColor;
+  }
+  > input:disabled + span {
+    opacity: .5;
+    pointer-events: none;
+  }
+
+  &--sort {
+    font-size: 1.4rem;
+    font-weight: 700;
+    > span {
+      padding: .5em .5em;
+      text-transform: none;
+      background-color: transparent;
+      color: #000;
+      &:hover,
+      &:active {
+        background-color: transparent;
+        color: $brandColor;
+      }
+    }
+    > input:checked + span {
+      background-color: transparent;
+      color: $brandColor;
+    }
+  }
+}
