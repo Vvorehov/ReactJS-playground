@@ -13,9 +13,6 @@ module.exports = {
   "transformIgnorePatterns": [
     "node_modules/(?!(jest-)?react-native|react-navigation)"
   ],
-  "roots": [
-    "__tests__"
-  ],
-  "testRegex": ".*.test.js",
+  "testMatch": [ '**/__tests__/**/*.js?(x)', '**/?(*.)(spec|test).js?(x)' ],
   "verbose": true
 };

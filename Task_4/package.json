@@ -1,7 +1,7 @@
 {
   "name": "task_4-testing",
   "version": "0.4.0",
-  "description": "Create React app with webpack",
+  "description": "Testing React",
   "main": "index.js",
   "scripts": {
     "test": "jest",
@@ -25,6 +25,7 @@
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "bootstrap": "^4.1.1",
@@ -46,6 +47,7 @@
     "webpack-dev-server": "^3.1.3"
   },
   "dependencies": {
+    "babel-runtime": "^6.26.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-redux": "^5.0.7",
