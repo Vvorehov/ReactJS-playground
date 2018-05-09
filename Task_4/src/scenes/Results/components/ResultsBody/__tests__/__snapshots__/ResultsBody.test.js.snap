@@ -1,0 +1,122 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ResultsBody layout complete ResultsBody Render EmptyResult 1`] = `
+<div
+  className="empty-result"
+>
+  No films found
+</div>
+`;
+
+exports[`ResultsBody layout complete ResultsBody Render correct 1`] = `
+<div
+  className="film-list"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col-sm-4"
+    >
+      <div
+        className="film-item"
+      >
+        <img
+          alt="Guardians of the Galaxy Vol. 3"
+          className="film-item__img"
+          src="https://image.tmdb.org/t/p/w500/ldoY4fTZkGISMidNw60GHoNdgP8.jpg"
+        />
+        <div
+          className="film-item__header"
+        >
+          <h3
+            className="film-item__name"
+          >
+            Guardians of the Galaxy Vol. 3
+          </h3>
+          <span
+            className="film-item__year"
+          >
+            2020
+          </span>
+          <div>
+            <span
+              className="film-item__genre"
+            >
+              Action, Adventure, Science Fiction
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="col-sm-4"
+    >
+      <div
+        className="film-item"
+      >
+        <img
+          alt="Transformers 7"
+          className="film-item__img"
+          src="https://image.tmdb.org/t/p/w500/432BowXw7a4fWXSONxBaFKqvW4f.jpg"
+        />
+        <div
+          className="film-item__header"
+        >
+          <h3
+            className="film-item__name"
+          >
+            Transformers 7
+          </h3>
+          <span
+            className="film-item__year"
+          >
+            2019
+          </span>
+          <div>
+            <span
+              className="film-item__genre"
+            >
+              Science Fiction, Action, Adventure
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="col-sm-4"
+    >
+      <div
+        className="film-item"
+      >
+        <img
+          alt="Untitled Avengers"
+          className="film-item__img"
+          src="https://image.tmdb.org/t/p/w500/aMETsaNNcDc6g5ZatQtVbySnSaA.jpg"
+        />
+        <div
+          className="film-item__header"
+        >
+          <h3
+            className="film-item__name"
+          >
+            Untitled Avengers
+          </h3>
+          <span
+            className="film-item__year"
+          >
+            2019
+          </span>
+          <div>
+            <span
+              className="film-item__genre"
+            >
+              Action, Adventure, Science Fiction
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

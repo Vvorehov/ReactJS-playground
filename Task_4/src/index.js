@@ -1,9 +1,9 @@
 import React from "react";
 import { render } from "react-dom";
-import { App } from "./scenes/App";
-/*import { FilmPage } from "./scenes/FilmPage";*/
+/*import { App } from "./scenes/App";*/
+import { FilmPage } from "./scenes/FilmPage";
 
 render(
-    <App />,
+    <FilmPage />,
     document.getElementById("container")
 );

@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search layout complete Render correct 1`] = `
+<form
+  className="search"
+  onSubmit={[Function]}
+>
+  <p
+    className="search_title"
+  >
+    Find your movie
+  </p>
+  <input
+    className="search_input"
+    placeholder="search..."
+    type="text"
+  />
+  <div
+    className="search_footer"
+  >
+    <div
+      className="search_type"
+    >
+      <p
+        className="search_type-title"
+      >
+        search by
+      </p>
+      <div
+        className="search_type-btn"
+      >
+        <label
+          className="radio"
+        >
+          <input
+            defaultChecked={true}
+            name="search-by"
+            onChange={[Function]}
+            type="radio"
+            value="title"
+          />
+          <span>
+            Title
+          </span>
+        </label>
+      </div>
+      <div
+        className="search_type-btn"
+      >
+        <label
+          className="radio"
+        >
+          <input
+            defaultChecked={undefined}
+            name="search-by"
+            onChange={[Function]}
+            type="radio"
+            value="genre"
+          />
+          <span>
+            Genre
+          </span>
+        </label>
+      </div>
+    </div>
+    <button
+      className="search_submit"
+      type="submit"
+    >
+      Search
+    </button>
+  </div>
+</form>
+`;

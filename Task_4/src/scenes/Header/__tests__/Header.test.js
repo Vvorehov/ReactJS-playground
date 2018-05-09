@@ -1,12 +1,12 @@
 import React from "react";
-import Logo from "../Logo";
+import Header from "../Header";
 import TestRenderer from 'react-test-renderer';
 
-describe('Logo layout complete', () => {
-    test('Render correct', () => {
+describe('Header layout complete', () => {
+    it('Render correct', () => {
 
         const component = TestRenderer.create(
-            <Logo className="siteLogo" siteName="netflixroulete" />
+            <Header />
         );
 
         let tree = component.toJSON();

@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Radio layout complete Render correct 1`] = `
+<label
+  className="radio"
+>
+  <input
+    defaultChecked={true}
+    name="search-by"
+    onChange={[Function]}
+    type="radio"
+    value="title"
+  />
+  <span>
+    Title
+  </span>
+</label>
+`;

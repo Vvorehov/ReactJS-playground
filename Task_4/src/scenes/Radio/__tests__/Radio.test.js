@@ -1,12 +1,12 @@
 import React from "react";
-import Logo from "../Logo";
+import Radio from "../Radio";
 import TestRenderer from 'react-test-renderer';
 
-describe('Logo layout complete', () => {
+describe('Radio layout complete', () => {
     test('Render correct', () => {
 
         const component = TestRenderer.create(
-            <Logo className="siteLogo" siteName="netflixroulete" />
+            <Radio name="search-by" label="Title" value="title" isChecked={true}/>
         );
 
         let tree = component.toJSON();

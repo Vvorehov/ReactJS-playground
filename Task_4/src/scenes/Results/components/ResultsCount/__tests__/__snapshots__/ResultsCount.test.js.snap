@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ResultsCount layout complete Render correct 1`] = `
+<div
+  className="results-count"
+>
+  <span
+    id="results-count"
+  >
+    7
+  </span>
+   movies found
+</div>
+`;
