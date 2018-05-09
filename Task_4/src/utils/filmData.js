@@ -1,3 +1,4 @@
+
 // Get all movies from API
 export function getFilms(cb) {
     fetch('//react-cdp-api.herokuapp.com/movies')

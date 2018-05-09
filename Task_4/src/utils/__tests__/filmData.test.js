@@ -34,7 +34,7 @@ describe('API', () => {
 
   });
 
-  it('getFilms', () => {
+  test('getFilms', () => {
     const successMock = jest.fn((data) => data);
     getFilms(successMock);
     setTimeout(()=>{
@@ -43,7 +43,7 @@ describe('API', () => {
     },1000);
   });
 
-  it('getFilmInfo', () => {
+  test('getFilmInfo', () => {
     const successMock = jest.fn((data) => data);
     getFilmInfo(null, successMock);
     setTimeout(()=>{
