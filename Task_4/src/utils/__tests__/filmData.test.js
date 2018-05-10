@@ -51,4 +51,22 @@ describe('API', () => {
       expect(successMock).toHaveBeenCalled()
     },1000);
   });
+
+  test('unsuccess getFilms', () => {
+    let unsuccessMock;
+    getFilms(unsuccessMock);
+    setTimeout(()=>{
+      console.log(getFilms(unsuccessMock));
+      expect(unsuccessMock).not.toHaveBeenCalled()
+    },1000);
+  });
+
+  test('unsuccess getFilmInfo', () => {
+    let unsuccessMock;
+    getFilmInfo(null, unsuccessMock);
+    setTimeout(()=>{
+      console.log(getFilmInfo(unsuccessMock));
+      expect(unsuccessMock).not.toHaveBeenCalled()
+    },1000);
+  });
 });

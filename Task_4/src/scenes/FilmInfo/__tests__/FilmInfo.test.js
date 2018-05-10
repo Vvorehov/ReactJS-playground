@@ -1,6 +1,11 @@
 import React from "react";
 import FilmInfo from "../FilmInfo";
 import TestRenderer from 'react-test-renderer';
+import { shallow, configure } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+// Setup enzyme's react adapter
+configure({ adapter: new Adapter() });
 
 const testFilmInfo = {
   "id": 284054,
@@ -22,6 +27,15 @@ const testFilmInfo = {
   "runtime": 134
 };
 
+describe('FilmInfo component', () => {
+  it('shallow wrapper instance should not be null', () => {
+    const wrapper = shallow(<FilmInfo {...testFilmInfo} />);
+    const instance = wrapper.instance();
+
+    expect(instance).not.toBe(null);
+  });
+});
+
 describe('FilmInfo layout complete', () => {
     beforeEach(function() {
 
@@ -41,7 +55,7 @@ describe('FilmInfo layout complete', () => {
 
     });
 
-    test('Render correct', () => {
+    it('Render correct', () => {
 
         const component = TestRenderer.create(
             <FilmInfo {...testFilmInfo} />

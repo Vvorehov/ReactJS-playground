@@ -15,7 +15,6 @@ class FilmPage extends Component {
       id: "284054",
       filmInfo: {}
     };
-    console.log(props.match)
   }
 
   componentDidMount() {
