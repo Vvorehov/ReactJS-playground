@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilmItem layout complete FilmItem Render correct 1`] = `
+<div
+  className="film-item"
+>
+  <img
+    alt={undefined}
+    className="film-item__img"
+    src={undefined}
+  />
+  <div
+    className="film-item__header"
+  >
+    <h3
+      className="film-item__name"
+    />
+    <span
+      className="film-item__year"
+    >
+      NaN
+    </span>
+    <div>
+      <span
+        className="film-item__genre"
+      >
+        
+      </span>
+    </div>
+  </div>
+</div>
+`;

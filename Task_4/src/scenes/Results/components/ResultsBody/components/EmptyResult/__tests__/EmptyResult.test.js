@@ -1,12 +1,13 @@
 import React from "react";
-import Logo from "../Logo";
+import EmptyResult from "../EmptyResult";
 import TestRenderer from 'react-test-renderer';
 
-describe('Logo layout complete', () => {
-    test('Render correct', () => {
+describe('EmptyResult layout complete', () => {
+
+    it('ResultsBody Render correct EmptyResult', () => {
 
         const component = TestRenderer.create(
-            <Logo className="siteLogo" siteName="netflixroulete" />
+            <EmptyResult />
         );
 
         let tree = component.toJSON();

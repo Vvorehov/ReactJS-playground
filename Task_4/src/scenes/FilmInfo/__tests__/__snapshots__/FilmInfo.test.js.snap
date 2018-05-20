@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilmInfo layout complete Render correct 1`] = `
+<div
+  className="film-info"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col-sm-4"
+    >
+      <img
+        alt="Black Panther"
+        className="film-info__poster"
+        src="https://image.tmdb.org/t/p/w500/uxzzxijgPIY7slzFvMotPv8wjKA.jpg"
+      />
+    </div>
+    <div
+      className="col-sm-8"
+    >
+      <div
+        className="film-info__details"
+      >
+        <h1
+          className="film-info__name"
+        >
+          Black Panther
+          <span
+            className="film-info__rating"
+          >
+            7.3
+          </span>
+        </h1>
+        <p
+          className="film-info__genre"
+        >
+          Action, Adventure, Fantasy, Science Fiction
+        </p>
+        <p
+          className="film-info__info"
+        >
+          <span>
+            2018
+          </span>
+          <span>
+            134
+             min
+          </span>
+        </p>
+        <p
+          className="film-info__desc"
+        >
+          King T'Challa returns home from America to the reclusive, technologically advanced African nation of Wakanda to serve as his country's new leader. However, T'Challa soon finds that he is challenged for the throne by factions within his own country as well as without.  Using powers reserved to Wakandan kings, T'Challa assumes the Black Panther mantel to join with girlfriend Nakia, the queen-mother, his princess-kid sister,  members of the Dora Milaje (the Wakandan "special forces"), and an American secret agent, to prevent Wakanda from being dragged into a world war.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;

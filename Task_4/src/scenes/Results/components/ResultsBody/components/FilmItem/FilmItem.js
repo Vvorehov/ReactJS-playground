@@ -4,6 +4,7 @@ import './styles.scss'
 
 class FilmItem extends Component {
   render() {
+    let genre = this.props.genres ? this.props.genres.join(", ") : "";
     return (
       <div className="film-item">
           <img src={this.props.poster_path} alt={this.props.title} className="film-item__img"/>
@@ -11,7 +12,7 @@ class FilmItem extends Component {
             <h3 className="film-item__name">{this.props.title}</h3>
             <span className="film-item__year">{(new Date(this.props.release_date)).getFullYear()}</span>
             <div>
-              <span className="film-item__genre">{this.props.genres.join(", ")}</span>
+              <span className="film-item__genre">{genre}</span>
             </div>
           </div>
       </div>

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header layout complete Render correct 1`] = `
+<header
+  id="header"
+>
+  <div
+    className="siteLogo"
+  >
+    netflixroulette
+  </div>
+  <a
+    className="backToHome"
+    href="/"
+  >
+    Search
+  </a>
+</header>
+`;

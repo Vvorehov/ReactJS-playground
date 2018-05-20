@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer layout complete Render correct 1`] = `
+<footer
+  id="footer"
+>
+  <div
+    className="siteLogo"
+  >
+    netflixroulette
+  </div>
+</footer>
+`;

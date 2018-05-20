@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ResultsSort layout complete Render correct 1`] = `
+<form
+  className="result-sort"
+>
+  <div
+    className="result-sort_title"
+  >
+    Sort by
+  </div>
+  <div
+    className="result-sort_btn"
+  >
+    <label
+      className="radio radio--sort"
+    >
+      <input
+        defaultChecked={true}
+        name="result-sort"
+        onChange={[Function]}
+        type="radio"
+        value="date"
+      />
+      <span>
+        Release date
+      </span>
+    </label>
+  </div>
+  <div
+    className="result-sort_btn"
+  >
+    <label
+      className="radio radio--sort"
+    >
+      <input
+        defaultChecked={undefined}
+        name="result-sort"
+        onChange={[Function]}
+        type="radio"
+        value="rating"
+      />
+      <span>
+        Rating
+      </span>
+    </label>
+  </div>
+</form>
+`;

@@ -1,12 +1,12 @@
 import React from "react";
-import Logo from "../Logo";
+import ResultsCount from "../ResultsCount";
 import TestRenderer from 'react-test-renderer';
 
-describe('Logo layout complete', () => {
+describe('ResultsCount layout complete', () => {
     test('Render correct', () => {
 
         const component = TestRenderer.create(
-            <Logo className="siteLogo" siteName="netflixroulete" />
+            <ResultsCount items="7" />
         );
 
         let tree = component.toJSON();

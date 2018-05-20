@@ -1,5 +1,9 @@
-exports['renders correctly Logo'] = `
-<div class="siteLogo">
-Logo
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Logo layout complete Render correct 1`] = `
+<div
+  className="siteLogo"
+>
+  netflixroulete
 </div>
 `;
