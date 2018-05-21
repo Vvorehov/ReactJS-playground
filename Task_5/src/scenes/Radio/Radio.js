@@ -3,10 +3,6 @@ import './styles.scss'
 
 class Radio extends Component {
 
-  changeHandler = () => {
-    console.log("radio changed");
-  };
-
   render() {
     let className = "radio";
     if (this.props.mod) className += " radio--" + this.props.mod;
@@ -17,7 +13,7 @@ class Radio extends Component {
                name={this.props.name}
                data-action-type={this.props.dataActionType}
                defaultChecked={this.props.isChecked}
-               onChange={this.changeHandler}
+               onChange={this.props.onChange}
                value={this.props.value}/>
         <span>{this.props.label}</span>
       </label>
