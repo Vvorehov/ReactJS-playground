@@ -40,7 +40,7 @@ class ResultsBody extends Component {
   }
 }
 
-const getFilms = () => {
+/*const getFilms = () => {
   fetch('//react-cdp-api.herokuapp.com/movies')
     .then(response => response.json())
     .then(data => {
@@ -49,7 +49,8 @@ const getFilms = () => {
     .catch(err => store.dispatch({type: actionsTypes.FETCH_MOVIES_FAILED}));
 };
 
-getFilms();
+getFilms();*/
+/*
 
 const rootReducer = (store, action) => {
   switch (action.type) {
@@ -61,11 +62,14 @@ const rootReducer = (store, action) => {
       return store;
   }
 };
+*/
 
-const store = createStore(rootReducer, {});
+/*const store = createStore(rootReducer, {});*/
+/*
 console.log(store.getState());
 store.subscribe(() => {
   console.log(store.getState());
 });
+*/
 
 export default ResultsBody;

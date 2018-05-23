@@ -1,50 +1,76 @@
-/*
-import { actionTypes } from './actionsTypes.js';
-import { createStore } from 'redux';
+import actionTypes from '../constants/actionsTypes';
 
+// Action creator - fetch method async
+export const getDataSorted = (sortedBy = "release_date") => {
+  dispatch(fetchMoviesStart());
+  const requestUrl = 'http://react-cdp-api.herokuapp.com/movies?sortBy=' + sortedBy + '&sortOrder=desc';
+  fetch(requestUrl)
+    .then(response => response.json())
+    .then(({data}) => {
+      dispatch(fetchMoviesSuccess(data.data));
+    })
+    .catch(error => dispatch(fetchMoviesFail(error)));
+};
 
-const fetchMoviesSuccess = movies => {
+export const getSearchData = (searchText, searchBy, sortedBy = "release_date") => {
+  dispatch(fetchMoviesStart());
+  const requestUrl = 'http://react-cdp-api.herokuapp.com/movies?sortBy' + sortedBy + '&sortOrder=desc&search=' + searchText + ' &searchBy=' + searchBy;
+  fetch(requestUrl)
+    .then(response => response.json())
+    .then(({data}) => {
+      dispatch(fetchMoviesSuccess(data.data));
+    })
+    .catch(error => dispatch(fetchMoviesFail(error)));
+};
+
+export const getFilmById = (filmId) => {
+  dispatch(fetchFilmStart());
+  const requestUrl = 'http://react-cdp-api.herokuapp.com/movies/' + filmId;
+  fetch(requestUrl)
+    .then(response => response.json())
+    .then(({data}) => {
+      dispatch(fetchFilmSuccess(data.data));
+    })
+    .catch(error => dispatch(fetchFilmFail(error)));
+};
+
+// Action creator
+export const fetchMoviesSuccess = movies => {
   return {
     type: actionTypes.FETCH_MOVIES_SUCCESS,
     movies
   }
 };
 
-const fetchMoviesFail = error => {
+export const fetchMoviesFail = error => {
   return {
     type: actionTypes.FETCH_MOVIES_FAILED,
     error
   }
 };
 
-const fetchMoviesStart = () => {
+export const fetchMoviesStart = () => {
   return {
     type: actionTypes.FETCH_MOVIES_START
   }
 };
 
-const fetchMovies = () => dispatch => {
-  dispatch(fetchMoviesStart());
-  fetch('//react-cdp-api.herokuapp.com/movies')
-    .then(response => response.json())
-    .then(({data}) => {
-      const movies = [];
-      for (let key in data) {
-        movies.push({
-          ...data[key],
-          id: key
-        })
-      }
-      dispatch(fetchMoviesSuccess(movies));
-    })
-    .catch(error => dispatch(fetchMoviesFail(error)));
+export const fetchFilmSuccess = movies => {
+  return {
+    type: actionTypes.FETCH_MOVIES_SUCCESS,
+    movies
+  }
 };
 
-const store = createStore(fetchMoviesSuccess(movies));
+export const fetchFilmFail = error => {
+  return {
+    type: actionTypes.FETCH_MOVIES_FAILED,
+    error
+  }
+};
 
-console.log(store.getState());
-
-export {
-  fetchMovies,
-  store
-}*/
+export const fetchFilmStart = () => {
+  return {
+    type: actionTypes.FETCH_MOVIES_START
+  }
+};
