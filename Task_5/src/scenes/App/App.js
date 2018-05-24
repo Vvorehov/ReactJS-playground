@@ -1,26 +1,46 @@
 import React, {Component} from 'react';
-import { Header } from "../Header";
-import { Search } from "../Search";
-import { Footer } from "../Footer";
-import { Results } from "../Results";
-import { ErrorBoundary } from "../ErrorBoundaries"
 import "../../../node_modules/bootstrap/scss/bootstrap-grid.scss";
 import "../../assets/styles/styles.scss";
+import HomePage from '../HomePage/HomePage';
+import { connect } from 'react-redux';
+import * as FilmActions from '../../actions/fetchData';
+import { bindActionCreators } from 'redux';
 
 class App extends Component {
+  componentDidMount() {
+    debugger;
+    this.props.filmsActions.getDataSorted("release_date");
+  }
+
   render() {
-    return (<div className="app">
-        <ErrorBoundary>
-          <section id="top-block">
-            <Header />
-            <Search />
-          </section>
-          <Results />
-          <Footer />
-        </ErrorBoundary>
-      </div>
+    return (<HomePage />
     );
   }
 }
 
-export default App;
+const initialState = {
+  movies: {
+    films: []
+  },
+  searchData: {
+    searchBy: "TITLE", // "GENRE"
+    searchQuery: "",
+    sortBy: "DATE", // "RATING"
+  },
+  singleFilm: {}
+};
+
+function mapStateToProps(state) {
+  return {
+    movies: state.movies
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    filmsActions: bindActionCreators(FilmActions, dispatch),
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

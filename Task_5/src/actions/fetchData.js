@@ -2,36 +2,42 @@ import actionTypes from '../constants/actionsTypes';
 
 // Action creator - fetch method async
 export const getDataSorted = (sortedBy = "release_date") => {
-  dispatch(fetchMoviesStart());
   const requestUrl = 'http://react-cdp-api.herokuapp.com/movies?sortBy=' + sortedBy + '&sortOrder=desc';
-  fetch(requestUrl)
-    .then(response => response.json())
-    .then(({data}) => {
-      dispatch(fetchMoviesSuccess(data.data));
-    })
-    .catch(error => dispatch(fetchMoviesFail(error)));
+  return dispatch => {
+    dispatch(fetchMoviesStart());
+    fetch(requestUrl)
+      .then(response => response.json())
+      .then(({data}) => {
+        dispatch(fetchMoviesSuccess(data.data));
+      })
+      .catch(error => dispatch(fetchMoviesFail(error)));
+  }
 };
 
 export const getSearchData = (searchText, searchBy, sortedBy = "release_date") => {
-  dispatch(fetchMoviesStart());
   const requestUrl = 'http://react-cdp-api.herokuapp.com/movies?sortBy' + sortedBy + '&sortOrder=desc&search=' + searchText + ' &searchBy=' + searchBy;
-  fetch(requestUrl)
-    .then(response => response.json())
-    .then(({data}) => {
-      dispatch(fetchMoviesSuccess(data.data));
-    })
-    .catch(error => dispatch(fetchMoviesFail(error)));
+  return dispatch => {
+    dispatch(fetchMoviesStart());
+    fetch(requestUrl)
+      .then(response => response.json())
+      .then(({data}) => {
+        dispatch(fetchMoviesSuccess(data.data));
+      })
+      .catch(error => dispatch(fetchMoviesFail(error)));
+  }
 };
 
 export const getFilmById = (filmId) => {
-  dispatch(fetchFilmStart());
   const requestUrl = 'http://react-cdp-api.herokuapp.com/movies/' + filmId;
-  fetch(requestUrl)
-    .then(response => response.json())
-    .then(({data}) => {
-      dispatch(fetchFilmSuccess(data.data));
-    })
-    .catch(error => dispatch(fetchFilmFail(error)));
+  return dispatch => {
+    dispatch(fetchFilmStart());
+    fetch(requestUrl)
+      .then(response => response.json())
+      .then(({data}) => {
+        dispatch(fetchFilmSuccess(data.data));
+      })
+      .catch(error => dispatch(fetchFilmFail(error)));
+  }
 };
 
 // Action creator

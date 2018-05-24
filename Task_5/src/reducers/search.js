@@ -5,7 +5,7 @@ export default (state = {}, action) => {
     case actionsTypes.SEARCH_BY:
       return {
         ...state,
-        ...action.searchBy
+        searchBy: action.searchBy
       };
     default:
       return state;
