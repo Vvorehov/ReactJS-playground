@@ -8,7 +8,6 @@ import { bindActionCreators } from 'redux';
 
 class App extends Component {
   componentDidMount() {
-    debugger;
     this.props.filmsActions.getDataSorted("release_date");
   }
 
@@ -19,9 +18,7 @@ class App extends Component {
 }
 
 const initialState = {
-  movies: {
-    films: []
-  },
+  movies: [],
   searchData: {
     searchBy: "TITLE", // "GENRE"
     searchQuery: "",
