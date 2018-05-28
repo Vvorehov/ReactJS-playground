@@ -1,18 +1,16 @@
-import actionsTypes from '../constants/actionsTypes'
+import actionsTypes from '../constants/actionsTypes';
+import initialState from './initialState.js';
 
-export default (state = {}, action) => {
+export default function sortedBy(state = {}, action) {
   switch (action.type) {
     case actionsTypes.SORT_BY:
+      console.log('sort_by');
       return {
         ...state,
         sortBy: action.sortBy
       };
-    case actionsTypes.FETCH_MOVIES_SUCCESS:
-      return {
-        ...state,
-        movies: action.movies
-      };
     default:
+      console.log('default');
       return state;
   }
 }

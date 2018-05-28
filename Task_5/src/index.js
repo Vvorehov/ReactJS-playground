@@ -2,32 +2,19 @@ import React from "react";
 import { render } from "react-dom";
 import App from "./scenes/App/App";
 /*import { FilmPage } from "./scenes/FilmPage";*/
-import { createStore, applyMiddleware  } from 'redux'
-import rootReducer from './reducers/reducer';
-import { sortByAction } from './actions/sortBy';
-import * as FilmActions from './actions/fetchData';
-import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
+import { createStore, applyMiddleware, compose  } from 'redux'
+import {store, persistor} from './store.js';
+import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/integration/react'
+import {getDataSorted} from './actions/fetchData.js';
 
-
-
-const store = createStore(rootReducer, applyMiddleware(thunk));
-
-/*console.log(store.getState());
-
-store.dispatch(sortByAction("release_date"));
-
-store.dispatch(FilmActions.fetchMoviesSuccess());
-
-console.log(store.getState());*/
-
+store.dispatch(getDataSorted());
 
 render(
   <Provider store={store}>
-    <App />
+    <PersistGate loading={null} persistor={persistor}>
+      <App />
+    </PersistGate>
   </Provider>,
   document.getElementById("container")
 );
-
-
-

@@ -4,23 +4,27 @@ import { Search } from "../Search";
 import { Footer } from "../Footer";
 import { Results } from "../Results";
 import { ErrorBoundary } from "../ErrorBoundaries"
-import "../../../node_modules/bootstrap/scss/bootstrap-grid.scss";
-import "../../assets/styles/styles.scss";
+
+import { connect } from 'react-redux';
+import * as FilmActions from '../../actions/fetchData';
+import { bindActionCreators } from 'redux';
+
 
 class HomePage extends Component {
-  /*componentDidMount() {
-    debugger;
-    this.props.filmsActions.getDataSorted("release_date");
-  }*/
+  componentDidMount() {
+
+  }
 
   render() {
+    let movies = this.props.filmList.movies || [];
+
     return (<div className="app">
         <ErrorBoundary>
           <section id="top-block">
             <Header />
             <Search />
           </section>
-          <Results />
+          <Results movies={movies}/>
           <Footer />
         </ErrorBoundary>
       </div>
@@ -28,4 +32,17 @@ class HomePage extends Component {
   }
 }
 
-export default HomePage;
+
+function mapStateToProps(state) {
+  return {
+    filmList: state.filmList
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    filmsActions: bindActionCreators(FilmActions, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

@@ -2,27 +2,25 @@ import actionTypes from '../constants/actionsTypes';
 
 // Action creator - fetch method async
 export const getDataSorted = (sortedBy = "release_date") => {
-  const requestUrl = 'http://react-cdp-api.herokuapp.com/movies?sortBy=' + sortedBy + '&sortOrder=desc';
+  let requestUrl = 'http://react-cdp-api.herokuapp.com/movies?sortBy=' + sortedBy + '&sortOrder=desc';
+  console.log('Get data sorted');
   return dispatch => {
     dispatch(fetchMoviesStart());
     fetch(requestUrl)
       .then(response => response.json())
-      .then(({data}) => {
-        dispatch(fetchMoviesSuccess(data.data));
-      })
+      .then(json => dispatch(fetchMoviesSuccess(json, sortedBy)))
       .catch(error => dispatch(fetchMoviesFail(error)));
   }
 };
 
-export const getSearchData = (searchText, searchBy, sortedBy = "release_date") => {
-  const requestUrl = 'http://react-cdp-api.herokuapp.com/movies?sortBy' + sortedBy + '&sortOrder=desc&search=' + searchText + ' &searchBy=' + searchBy;
+export const getSearchData = (search) => {
+  let requestUrl = 'http://react-cdp-api.herokuapp.com/movies?search=' + search.searchQuery + '&searchBy=' + search.searchBy.toLowerCase();
+  console.log('Get search data');
   return dispatch => {
     dispatch(fetchMoviesStart());
     fetch(requestUrl)
       .then(response => response.json())
-      .then(({data}) => {
-        dispatch(fetchMoviesSuccess(data.data));
-      })
+      .then(json => dispatch(fetchMoviesSearchSuccess(json, search)))
       .catch(error => dispatch(fetchMoviesFail(error)));
   }
 };
@@ -33,18 +31,26 @@ export const getFilmById = (filmId) => {
     dispatch(fetchFilmStart());
     fetch(requestUrl)
       .then(response => response.json())
-      .then(({data}) => {
-        dispatch(fetchFilmSuccess(data.data));
-      })
+      .then(json => dispatch(fetchFilmSuccess(json)))
       .catch(error => dispatch(fetchFilmFail(error)));
   }
 };
 
 // Action creator
-export const fetchMoviesSuccess = movies => {
+export const fetchMoviesSuccess = (json, sortBy) => {
   return {
     type: actionTypes.FETCH_MOVIES_SUCCESS,
-    movies
+    sortBy: sortBy,
+    movies: json.data
+  }
+};
+
+export const fetchMoviesSearchSuccess = (json, search) => {
+  return {
+    type: actionTypes.FETCH_MOVIES_SEARCH_SUCCESS,
+    searchBy: search.searchBy,
+    searchQuery: search.searchQuery,
+    movies: json.data
   }
 };
 
@@ -61,22 +67,22 @@ export const fetchMoviesStart = () => {
   }
 };
 
-export const fetchFilmSuccess = movies => {
+export const fetchFilmSuccess = json => {
   return {
-    type: actionTypes.FETCH_MOVIES_SUCCESS,
-    movies
+    type: actionTypes.FETCH_FILM_SUCCESS,
+    film: json
   }
 };
 
 export const fetchFilmFail = error => {
   return {
-    type: actionTypes.FETCH_MOVIES_FAILED,
+    type: actionTypes.FETCH_FILM_FAILED,
     error
   }
 };
 
 export const fetchFilmStart = () => {
   return {
-    type: actionTypes.FETCH_MOVIES_START
+    type: actionTypes.FETCH_FILM_START
   }
 };

@@ -2,51 +2,35 @@ import React, { Component } from "react";
 import "./styles.scss";
 
 class FilmInfo extends Component {
-  constructor(props) {
-    super(props);
-    console.log(this.props);
-    this.state = {
-      genres: []
-    }
-  }
-
-  getFilmInfo(id) {
-    fetch('//react-cdp-api.herokuapp.com/movies/' + id)
-      .then(response => response.json())
-      .then(data => {
-        this.setState(data);
-      })
-      .catch(err => console.error(this.props.url, err.toString()))
-  }
-
-  componentDidMount() {
-    this.getFilmInfo(this.props.id)
-  }
 
   render() {
-    return (
-      <div className="film-info">
-        <div className="row">
-          <div className="col-sm-4">
-            <img src={this.state.poster_path} alt={this.state.title} className="film-info__poster"/>
-          </div>
-          <div className="col-sm-8">
-            <div className="film-info__details">
-              <h1 className="film-info__name">
-                {this.state.title}
-                <span className="film-info__rating">{this.state.vote_average}</span>
-              </h1>
-              <p className="film-info__genre">{this.state.genres.join(", ")}</p>
-              <p className="film-info__info">
-                <span>{(new Date(this.state.release_date)).getFullYear()}</span>
-                <span>{this.state.runtime} min</span>
-              </p>
-              <p className="film-info__desc">{this.state.overview}</p>
+    if (this.props.film) {
+      return (
+        <div className="film-info">
+          <div className="row">
+            <div className="col-sm-4">
+              <img src={this.props.film.poster_path} alt={this.props.film.title} className="film-info__poster"/>
+            </div>
+            <div className="col-sm-8">
+              <div className="film-info__details">
+                <h1 className="film-info__name">
+                  {this.props.film.title}
+                  <span className="film-info__rating">{this.props.film.vote_average}</span>
+                </h1>
+                <p className="film-info__genre">{this.props.film.genres.join(", ")}</p>
+                <p className="film-info__info">
+                  <span>{(new Date(this.props.film.release_date)).getFullYear()}</span>
+                  <span>{this.props.film.runtime} min</span>
+                </p>
+                <p className="film-info__desc">{this.props.film.overview}</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    )
+      )
+    } else {
+        return <h2 className="film-info_empty">Loading...</h2>
+    }
   }
 }
 

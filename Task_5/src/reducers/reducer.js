@@ -1,8 +1,14 @@
 import { combineReducers } from 'redux';
-import sortBy from "./sortBy";
-import search from "./search";
+import sortData from "./sortBy";
+import searchData from "./search";
+import filmList from "./filmList";
+import singleFilm from "./singleFilm";
+//import initialState from "./initialState";
 
 export default combineReducers({
-  sortData: sortBy,
-  searchData: search
+  filmList,
+  sortData,
+  searchData,
+  singleFilm
 })
+

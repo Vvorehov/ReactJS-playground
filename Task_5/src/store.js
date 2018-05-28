@@ -1,14 +1,41 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose  } from 'redux'
 import rootReducer from './reducers/reducer';
-import { sortByAction } from './actions/sortBy';
-import { fetchMoviesSuccess, getDataSorted } from './actions/fetchData';
+import {persistStore, persistReducer} from 'redux-persist'
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import {createLogger} from 'redux-logger';
+import storage from 'redux-persist/lib/storage';
+import initialState from './reducers/initialState.js';
 
-const data = getDataSorted("release_date");
-const store = createStore(rootReducer);
-console.log('data: ' + data);
-console.log('before dispatch: ' + store.getState());
-store.dispatch(sortByAction("release_date"));
+const middlewares = [thunk];
 
-store.dispatch(fetchMoviesSuccess());
+const persistConfig = {
+  key: 'root',
+  storage
+};
 
-console.log('after dispatch: ' + store.getState());
+let composeEnhancers = compose;
+
+if (process.env.NODE_ENV === 'development') {
+
+  if ('__REDUX_DEVTOOLS_EXTENSION_COMPOSE__' in window) {
+    composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+  }
+
+  const loggerMiddleware = createLogger();
+  middlewares.push(loggerMiddleware)
+}
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+export const store = createStore(
+  persistedReducer,
+  initialState,
+  composeEnhancers(
+    applyMiddleware(...middlewares)
+  )
+);
+
+
+
+export const persistor = persistStore(store);
