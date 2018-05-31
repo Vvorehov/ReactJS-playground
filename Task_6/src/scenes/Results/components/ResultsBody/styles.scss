@@ -1,0 +1,16 @@
+.film-list {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-grow: 1;
+  flex-shrink: 0;
+  padding: 2rem 6rem 0;
+  flex-wrap: wrap;
+
+  .film-item {
+
+    img {
+      width: 100%;
+    }
+  }
+}
