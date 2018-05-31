@@ -29,11 +29,17 @@ const uglifyJsPlugin = new UglifyJsPlugin({
 
 module.exports = (env) => {
   const isProduction = env.NODE_ENV == "production";
+
   let config = {
     entry: "./src/index.js",
     output: {
       filename: 'bundle.js',
       path: path.resolve(__dirname, 'dist')
+    },
+    devServer: {
+      port: 8080,
+      contentBase: path.resolve(__dirname),
+      historyApiFallback: true
     },
     plugins: [webpackCleanPlugin, htmlWebpackPlugin],
     module: {
