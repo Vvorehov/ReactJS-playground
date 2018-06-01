@@ -2,10 +2,10 @@ import React from "react";
 import { Logo } from "../Logo";
 import "./styles.scss";
 
-const Header = () => {
+const Header = (props) => {
   return <header id="header">
     <Logo siteName="netflixroulette"/>
-    <a className="backToHome" href="/">Search</a>
+    <a className={props.showSearchLink ? 'backToHome':'isHidden'} href="/">Search</a>
   </header>;
 };
 

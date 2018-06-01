@@ -7,6 +7,8 @@ const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const WebPackCleanPlugin = require('webpack-clean-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const { BaseHrefWebpackPlugin } = require('base-href-webpack-plugin');
+
 
 const htmlWebpackPlugin = new HtmlWebPackPlugin({
   template: "./src/index.html",
@@ -17,6 +19,9 @@ const webpackCleanPlugin = new WebPackCleanPlugin({
   on: "emit",
   path: ["dist"]
 });
+
+const baseHref = '/';
+const baseHrefWebpackPlugin = new BaseHrefWebpackPlugin({baseHref: baseHref});
 
 const uglifyJsPlugin = new UglifyJsPlugin({
   test: /\.js($|\?)/i,
@@ -38,10 +43,11 @@ module.exports = (env) => {
     },
     devServer: {
       port: 8080,
-      contentBase: path.resolve(__dirname),
+      inline: true,
+      contentBase: './',
       historyApiFallback: true
     },
-    plugins: [webpackCleanPlugin, htmlWebpackPlugin],
+    plugins: [webpackCleanPlugin, htmlWebpackPlugin, baseHrefWebpackPlugin],
     module: {
       rules: [
         {

@@ -5,14 +5,24 @@ import "./styles.scss";
 class Results extends Component {
 
   render() {
-
-    return <main className="results">
-      <div className="results-panel">
-        <ResultsCount items="10"/>
-        <ResultsSort />
-      </div>
-      <ResultsBody movies={this.props.movies}/>
-    </main>
+    if(this.props.film) {
+      return <main className="results">
+        <div className="results-panel">
+          <div className="results-film-genre">
+            Films by {this.props.film.genres[0]} genre
+          </div>
+        </div>
+        <ResultsBody movies={this.props.movies}/>
+      </main>
+    } else {
+      return <main className="results">
+        <div className="results-panel">
+          <ResultsCount items={this.props.movies.length}/>
+          <ResultsSort />
+        </div>
+        <ResultsBody movies={this.props.movies}/>
+      </main>
+    }
   }
 }
 

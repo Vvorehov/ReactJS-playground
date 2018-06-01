@@ -19,13 +19,13 @@ class HomePage extends Component {
     let movies = this.props.filmList.movies || [];
 
     return (<ErrorBoundary>
-          <section id="top-block">
-            <Header />
-            <Search />
-          </section>
-          <Results movies={movies}/>
-          <Footer />
-        </ErrorBoundary>
+        <section id="top-block">
+          <Header />
+          <Search />
+        </section>
+        <Results movies={movies}/>
+        <Footer />
+      </ErrorBoundary>
     );
   }
 }

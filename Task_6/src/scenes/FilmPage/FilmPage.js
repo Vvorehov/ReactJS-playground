@@ -32,16 +32,14 @@ class FilmPage extends Component {
     let singleFilm = this.props.singleFilm || {};
     let movies = this.props.filmList.movies || [];
 
-    return (<div className="app">
-      <ErrorBoundary>
+    return (<ErrorBoundary>
         <section id="top-block">
-          <Header />
+          <Header showSearchLink />
           <FilmInfo film={singleFilm} />
         </section>
-        <Results movies={movies}/>
+        <Results film={singleFilm} movies={movies}/>
         <Footer />
       </ErrorBoundary>
-    </div>
     );
   }
 }

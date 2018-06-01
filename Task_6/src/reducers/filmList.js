@@ -15,7 +15,8 @@ export default (state = {movies: []}, action) => {
         movies: action.movies
       };
     case actionsTypes.FETCH_MOVIES_START:
-      if (state.movies !== []) {
+      if (false) {
+        // There could be your spinner )
         return {
           ...state
         }
