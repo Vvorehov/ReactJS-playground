@@ -1,12 +1,12 @@
 import actionsTypes from '../constants/actionsTypes'
 
-export default function searchData(state = {}, action) {
+export default (state = {}, action) => {
   switch (action.type) {
     case actionsTypes.SEARCH_BY:
-      console.log('sort_by');
+      console.log('Search_by');
       return {
         ...state,
-        searchBy: action.searchBy
+        ...action.searchData
       };
     default:
       console.log('default');

@@ -6,7 +6,8 @@ export default (state = {}, action) => {
       console.log('fetch film success');
       return {
         ...state,
-        ...action.film
+        ...action.film,
+        ...action.film.genres
       };
     default:
       return state;

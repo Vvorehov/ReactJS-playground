@@ -10,8 +10,9 @@ class Page404 extends Component {
     return (<div className="app">
         <section id="top-block">
           <Header showSearchLink />
-          <Search />
+          <Search {...this.props} />
         </section>
+        <div className="results-panel"></div>
         <EmptyResult text="Page not found"/>
         <Footer />
       </div>

@@ -4,7 +4,8 @@ import "./styles.scss";
 class FilmInfo extends Component {
 
   render() {
-    if (this.props.film) {
+    if (this.props.film && this.props.film.genres) {
+      let genres = this.props.film.genres ? this.props.film.genres.join(", ") : "";
       return (
         <div className="film-info">
           <div className="row">
@@ -17,7 +18,7 @@ class FilmInfo extends Component {
                   {this.props.film.title}
                   <span className="film-info__rating">{this.props.film.vote_average}</span>
                 </h1>
-                <p className="film-info__genre">{this.props.film.genres.join(", ")}</p>
+                <p className="film-info__genre">{genres}</p>
                 <p className="film-info__info">
                   <span>{(new Date(this.props.film.release_date)).getFullYear()}</span>
                   <span>{this.props.film.runtime} min</span>

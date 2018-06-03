@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Header } from "../Header";
 import { Search } from "../Search";
 import { Footer } from "../Footer";
-import { Results } from "../Results";
+import { EmptyResult } from "../Results/components/ResultsBody/components/EmptyResult";
 import { ErrorBoundary } from "../ErrorBoundaries"
 
 import { connect } from 'react-redux';
@@ -11,19 +11,14 @@ import { bindActionCreators } from 'redux';
 
 
 class HomePage extends Component {
-  componentDidMount() {
-
-  }
-
   render() {
-    let movies = this.props.filmList.movies || [];
 
     return (<ErrorBoundary>
           <section id="top-block">
             <Header />
-            <Search />
+            <Search {...this.props} />
           </section>
-          <Results movies={movies}/>
+          <EmptyResult text="Please, find film by using Search block "/>
           <Footer />
         </ErrorBoundary>
     );
@@ -31,16 +26,5 @@ class HomePage extends Component {
 }
 
 
-function mapStateToProps(state) {
-  return {
-    filmList: state.filmList
-  }
-}
 
-function mapDispatchToProps(dispatch) {
-  return {
-    filmsActions: bindActionCreators(FilmActions, dispatch)
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+export default HomePage;

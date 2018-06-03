@@ -5,7 +5,7 @@ import "./styles.scss";
 
 class ResultsBody extends Component {
   render() {
-    if (this.props.movies) {
+    if (this.props.movies.length > 0) {
       return (
         <div className="film-list">
           <div className="row">
@@ -20,9 +20,8 @@ class ResultsBody extends Component {
         </div>
       )
     } else {
-      return <EmptyResult />
+      return <EmptyResult text="No Films found" />
     }
-
   }
 }
 

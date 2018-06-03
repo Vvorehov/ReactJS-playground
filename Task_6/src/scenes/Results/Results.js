@@ -5,7 +5,7 @@ import "./styles.scss";
 class Results extends Component {
 
   render() {
-    if(this.props.film) {
+    if (this.props.film && this.props.film.genres) {
       return <main className="results">
         <div className="results-panel">
           <div className="results-film-genre">
@@ -18,7 +18,7 @@ class Results extends Component {
       return <main className="results">
         <div className="results-panel">
           <ResultsCount items={this.props.movies.length}/>
-          <ResultsSort />
+          <ResultsSort {...this.props} />
         </div>
         <ResultsBody movies={this.props.movies}/>
       </main>

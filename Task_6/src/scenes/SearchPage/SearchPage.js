@@ -10,20 +10,19 @@ import * as FilmActions from '../../actions/fetchData';
 import { bindActionCreators } from 'redux';
 
 
-class HomePage extends Component {
+class SearchPage extends Component {
   componentDidMount() {
 
   }
 
   render() {
-    let movies = this.props.filmList.movies || [];
 
     return (<ErrorBoundary>
         <section id="top-block">
           <Header />
-          <Search />
+          <Search {...this.props} />
         </section>
-        <Results movies={movies}/>
+        <Results movies={this.props.movies}/>
         <Footer />
       </ErrorBoundary>
     );
@@ -33,7 +32,7 @@ class HomePage extends Component {
 
 function mapStateToProps(state) {
   return {
-    filmList: state.filmList
+    movies: state.filmList.movies || []
   }
 }
 
@@ -43,4 +42,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchPage);

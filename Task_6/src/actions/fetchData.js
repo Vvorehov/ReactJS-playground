@@ -13,8 +13,11 @@ export const getDataSorted = (sortedBy = "release_date") => {
   }
 };
 
-export const getSearchData = (search) => {
-  let requestUrl = 'http://react-cdp-api.herokuapp.com/movies?search=' + search.searchQuery + '&searchBy=' + search.searchBy.toLowerCase();
+export const fetchSearchResults = (search, sortedBy = "release_date") => {
+  let sortData = '&sortBy=' + sortedBy;
+  let searchData = '&search=' + search.searchQuery + '&searchBy=' + search.searchBy.toLowerCase();
+  //let requestUrl = 'http://react-cdp-api.herokuapp.com/movies?search=' + search.searchQuery + '&searchBy=' + search.searchBy.toLowerCase();
+  let requestUrl = 'http://react-cdp-api.herokuapp.com/movies?sortOrder=desc' + sortData + searchData;
   console.log('Get search data');
   return dispatch => {
     dispatch(fetchMoviesStart());
@@ -48,8 +51,7 @@ export const fetchMoviesSuccess = (json, sortBy) => {
 export const fetchMoviesSearchSuccess = (json, search) => {
   return {
     type: actionTypes.FETCH_MOVIES_SEARCH_SUCCESS,
-    searchBy: search.searchBy,
-    searchQuery: search.searchQuery,
+    searchData: search,
     movies: json.data
   }
 };

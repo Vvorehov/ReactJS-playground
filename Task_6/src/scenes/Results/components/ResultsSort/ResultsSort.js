@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { Radio } from '../../../Radio';
 import actionTypes from "../../../../constants/actionsTypes.js";
-//import { getDataSorted } from "../../../../actions/fetchData.js";
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -15,7 +14,7 @@ class ResultsSort extends Component {
   }
 
   handleOnChange(e) {
-    this.props.sortActions.getDataSorted(e.target.value);
+    this.props.fetchSearchResults(this.props.searchData, e.target.value);
   }
 
   render() {
@@ -36,13 +35,14 @@ class ResultsSort extends Component {
 
 function mapStateToProps(state) {
   return {
-    sortData:state.sortData
+    sortData: state.sortData,
+    searchData: state.searchData
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    sortActions: bindActionCreators(FetchData, dispatch)
+    fetchSearchResults: bindActionCreators(FetchData.fetchSearchResults, dispatch)
   }
 }
 

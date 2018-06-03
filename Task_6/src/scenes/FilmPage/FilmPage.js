@@ -6,38 +6,34 @@ import { Footer } from "../Footer";
 import { ErrorBoundary } from "../ErrorBoundaries";
 
 import { connect } from 'react-redux';
-import * as FilmActions from '../../actions/fetchData';
+import * as FetchActions from '../../actions/fetchData';
 import { bindActionCreators } from 'redux';
 
 class FilmPage extends Component {
   componentDidMount() {
-    this.props.singleFilmActions.getFilmById(this.props.match.params.movieId);
-    let search = {searchQuery: this.props.singleFilm.genres[0], searchBy: 'GENRES'}
-    this.props.singleFilmActions.getSearchData(search);
-
+    this.props.getFilmById(this.props.match.params.movieId);
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.location !== prevProps.location) {
-      this.props.singleFilmActions.getFilmById(this.props.match.params.movieId);
+      this.props.getFilmById(this.props.match.params.movieId);
     }
 
-    // only update chart if the filmInfo has changed
-    if (prevProps.filmInfo !== this.props.filmInfo) {
-      this.singleFilmActions();
+    if (prevProps.singleFilm !== this.props.singleFilm) {
+      let search = {searchQuery: this.props.singleFilm.genres[0], searchBy: 'GENRES'};
+      this.props.fetchSearchResults(search)
     }
   }
 
+
   render() {
-    let singleFilm = this.props.singleFilm || {};
-    let movies = this.props.filmList.movies || [];
 
     return (<ErrorBoundary>
         <section id="top-block">
           <Header showSearchLink />
-          <FilmInfo film={singleFilm} />
+          <FilmInfo film={this.props.singleFilm} />
         </section>
-        <Results film={singleFilm} movies={movies}/>
+        <Results film={this.props.singleFilm} movies={this.props.movies} />
         <Footer />
       </ErrorBoundary>
     );
@@ -46,14 +42,15 @@ class FilmPage extends Component {
 
 function mapStateToProps(state) {
   return {
-    singleFilm: state.singleFilm,
-    filmList: state.filmList
+    singleFilm: state.singleFilm || {},
+    movies: state.filmList.movies || []
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    singleFilmActions: bindActionCreators(FilmActions, dispatch)
+    fetchSearchResults: bindActionCreators(FetchActions.fetchSearchResults, dispatch),
+    getFilmById: bindActionCreators(FetchActions.getFilmById, dispatch),
   }
 }
 
