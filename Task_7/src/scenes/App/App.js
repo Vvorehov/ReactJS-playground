@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import "../../../node_modules/bootstrap/scss/bootstrap-grid.scss";
-import "../../assets/styles/styles.scss";
+import { hot } from 'react-hot-loader';
+//import "../../assets/styles/styles.scss";
 
 class App extends Component {
 
@@ -11,4 +11,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default hot(module)(App);

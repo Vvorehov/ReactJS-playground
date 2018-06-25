@@ -1,31 +1,20 @@
-import React from "react";
-import { render } from "react-dom";
-import App from "./scenes/App/App";
+import React from 'react';
+import { hydrate } from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import {store, persistor} from './store.js';
-import {Provider} from 'react-redux';
-import {PersistGate} from 'redux-persist/integration/react'
-import {getDataSorted} from './actions/fetchData.js';
-import HomePage from '../src/scenes/HomePage/HomePage';
-import FilmPage from '../src/scenes/FilmPage/FilmPage';
-import SearchPage from '../src/scenes/SearchPage/SearchPage';
-import Page404 from '../src/scenes/Page404/Page404';
+import Root from './Root';
+import configureStore from './store';
 
-render(
-  <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      <Router>
-        <App>
-          <Switch>
-            <Route exact path="/" component={HomePage}/>
-            <Route path="/film/:movieId" component={FilmPage}/>
-            <Route path="/search/:searchBy/:searchQuery" component={SearchPage}/>
-            <Route path="*" component={Page404}/>
-          </Switch>
-        </App>
-      </Router>
-    </PersistGate>
-  </Provider>,
-  document.getElementById("container")
+import 'bootstrap/dist/css/bootstrap-grid.css';
+//import './assets/styles/style.scss';
+
+const store = configureStore(window.PRELOADED_STATE);
+
+const root = (
+  <Root
+    Router={BrowserRouter}
+    store={store}
+  />
 );
+
+hydrate(root, document.getElementById('container'));

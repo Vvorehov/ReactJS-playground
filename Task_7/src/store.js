@@ -18,7 +18,7 @@ let composeEnhancers = compose;
 
 if (process.env.NODE_ENV === 'development') {
 
-  if ('__REDUX_DEVTOOLS_EXTENSION_COMPOSE__' in window) {
+  if (typeof window !== 'undefined' && '__REDUX_DEVTOOLS_EXTENSION_COMPOSE__' in window) {
     composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
   }
 
@@ -35,7 +35,5 @@ export const store = createStore(
     applyMiddleware(...middlewares)
   )
 );
-
-
 
 export const persistor = persistStore(store);
