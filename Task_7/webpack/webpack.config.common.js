@@ -11,7 +11,7 @@ module.exports = {
   output: {
     filename: 'js/[name].js',
     path: path.resolve('./public'),
-    libraryTarget: 'commonjs2',
+    libraryTarget: 'commonjs2'
   },
 
   module: {

@@ -7,6 +7,7 @@ import {PersistGate} from 'redux-persist/integration/react';
 import { createStore, combineReducers } from 'redux';
 import { persistor} from './store.js';
 import rootReducer from './reducers/reducer';
+import storage from 'redux-persist/lib/storage';
 
 import App from "./scenes/App/App";
 import HomePage from '../src/scenes/HomePage/HomePage';

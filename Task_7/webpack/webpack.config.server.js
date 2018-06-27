@@ -9,13 +9,13 @@ module.exports = merge(common, {
   name: 'server',
   target: 'node',
   entry: {
-    index: '../src/serverRenderer.js'
+    index: './src/serverRenderer.js'
   },
   externals: [nodeExternals()],
   output: {
     path: path.resolve('./public'),
     filename: 'js/serverRenderer.js',
-    libraryTarget: 'commonjs2',
+    libraryTarget: 'commonjs2'
   },
   module: {
     rules: [
