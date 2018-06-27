@@ -13,7 +13,7 @@ if (process.env.NODE_ENV === 'development') {
 
   app.use(webpackDevMiddleware(compiler));
   app.use(webpackHotMiddleware(compiler.compilers.find(c => c.name === 'client')));
-  app.use(webpackHotServerMiddleware(compiler));
+  app.use(webpackHotServerMiddleware(compiler, { chunkName: 'index' }));
 } else {
   const serverRenderer = require('./js/serverRenderer').default;
 

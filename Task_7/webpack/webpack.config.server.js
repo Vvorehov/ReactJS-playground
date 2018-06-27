@@ -1,5 +1,6 @@
 const merge = require('webpack-merge');
 const nodeExternals = require('webpack-node-externals');
+const path = require('path');
 const common = require('./webpack.config.common');
 
 console.log("!!!Server config!!!");
@@ -7,9 +8,12 @@ console.log("!!!Server config!!!");
 module.exports = merge(common, {
   name: 'server',
   target: 'node',
-  entry: './src/serverRenderer.js',
+  entry: {
+    index: '../src/serverRenderer.js'
+  },
   externals: [nodeExternals()],
   output: {
+    path: path.resolve('./public'),
     filename: 'js/serverRenderer.js',
     libraryTarget: 'commonjs2',
   },

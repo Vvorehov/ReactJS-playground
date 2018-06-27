@@ -1,10 +1,47 @@
-import React from 'react';
-import {renderToString} from 'react-dom/server';
-import {StaticRouter} from 'react-router-dom';
-import Root from './Root';
-import {store, persistor} from './store';
+import { renderToString } from 'react-dom/server'
+import StaticRouter from 'react-router/StaticRouter'
+import { ReduxAsyncConnect, loadOnServer, reducer as reduxAsyncConnect } from 'redux-connect'
+import { parse as parseUrl } from 'url'
+import { Provider } from 'react-redux'
+import serialize from 'serialize-javascript'
+import { createStore, combineReducers } from 'redux'
+const express = require('express');
+import rootReducer from './reducers/reducer';
 
-function renderHTML(html, preloadedState) {
+const app = express();
+
+app.get('*', (req, res) => {
+  const store = createStore(combineReducers({ reduxAsyncConnect, rootReducer }))
+  const url = req.originalUrl || req.url
+  const location = parseUrl(url)
+
+  // 1. load data
+  loadOnServer({ store, location, routes, helpers })
+    .then(() => {
+      const context = {}
+
+      // 2. use `ReduxAsyncConnect` to render component tree
+      const appHTML = renderToString(
+        <Provider store={store} key="provider">
+          <StaticRouter location={location} context={context}>
+            <ReduxAsyncConnect routes={routes} helpers={helpers} />
+          </StaticRouter>
+        </Provider>
+      )
+
+      // handle redirects
+      if (context.url) {
+        req.header('Location', context.url)
+        return res.send(302)
+      }
+
+      // 3. render the Redux initial data into the server markup
+      const html = createPage(appHTML, store)
+      res.send(html)
+    })
+})
+
+function createPage(html, store) {
   return `
       <!doctype html>
       <html>
@@ -15,43 +52,13 @@ function renderHTML(html, preloadedState) {
           ${process.env.NODE_ENV === 'development' ? '' : '<link href="/css/main.css" rel="stylesheet" type="text/css">'}
         </head>
         <body>
-          <div id="root">${html}</div>
-          <script>
-            // WARNING: See the following for security issues around embedding JSON in HTML:
-            // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
-            window.PRELOADED_STATE = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
+          <div id="app">${html}</div>
+          <!-- its a Redux initial data -->
+          <script type="text/javascript">
+            window.__data=${serialize(store.getState())};
           </script>
           <script src="/js/main.js"></script>
         </body>
       </html>
   `;
 }
-
-export default function serverRenderer() {
-  return (req, res) => {
-    // This context object contains the results of the render
-    const context = {};
-
-    const root = (
-      <Root
-        context={context}
-        location={req.url}
-        Router={StaticRouter}
-        store={store}
-        persistor={persistor}
-      />
-    );
-    console.log("context: " + {context} + "location " + {req} + " Router " + {StaticRouter} + " store: " + {store});
-
-    const htmlString = renderToString(root);
-
-    const preloadedState = store.getState();
-
-    res.send(renderHTML(htmlString, preloadedState));
-
-    // Do first render, starts initial actions.
-    renderToString(root);
-    // When the first render is finished, send the END action to redux-saga.
-    store.close();
-  };
-};
