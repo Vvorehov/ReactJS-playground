@@ -27,12 +27,6 @@ module.exports = merge(common, {
     './src/index.js',
   ].filter(Boolean),
 
-  output: {
-    path: path.resolve('./public'),
-    filename: 'js/bundle.js',
-    libraryTarget: 'commonjs2'
-  },
-
   module: {
     rules: [
       { test: /\.css$/, loader: "style-loader!css-loader?importLoaders=1" },

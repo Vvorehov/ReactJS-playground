@@ -11,9 +11,20 @@ if (process.env.NODE_ENV === 'development') {
 
   const compiler = webpack(webpackConfig);
 
-  app.use(webpackDevMiddleware(compiler));
+  app.use(webpackDevMiddleware(compiler, {
+    serverSideRender: true
+  }));
   app.use(webpackHotMiddleware(compiler.compilers.find(c => c.name === 'client')));
   app.use(webpackHotServerMiddleware(compiler, { chunkName: 'index' }));
+
+  console.log(app)
+  /*compiler.watch({}, (err, stats) => {
+    if (err) throw err
+    stats = stats.toJson()
+    if (stats.errors.length) return
+
+    update()
+  })*/
 } else {
   const serverRenderer = require('./js/serverRenderer').default;
 
