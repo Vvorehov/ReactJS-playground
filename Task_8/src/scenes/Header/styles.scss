@@ -1,0 +1,19 @@
+#header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #ED5664;
+  padding: 0 6rem 5rem;
+}
+
+.backToHome {
+  color: #ED5664;
+  padding: 0.5rem 1em;
+  background: #fff;
+  display: inline-block;
+  border-radius: 2px;
+}
+
+.isHidden {
+  display: none;
+}
