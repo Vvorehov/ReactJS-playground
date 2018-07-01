@@ -17,7 +17,6 @@ if (process.env.NODE_ENV === 'development') {
   app.use(webpackHotMiddleware(compiler.compilers.find(c => c.name === 'client')));
   app.use(webpackHotServerMiddleware(compiler, { chunkName: 'index' }));
 
-  console.log(app)
   /*compiler.watch({}, (err, stats) => {
     if (err) throw err
     stats = stats.toJson()
@@ -26,7 +25,7 @@ if (process.env.NODE_ENV === 'development') {
     update()
   })*/
 } else {
-  const serverRenderer = require('./js/serverRenderer').default;
+  const serverRenderer = require('../public/js/serverRenderer.js').default;
 
   app.use(express.static('public'));
   app.use(serverRenderer());

@@ -5,11 +5,6 @@ import { Footer } from "../Footer";
 import { EmptyResult } from "../Results/components/ResultsBody/components/EmptyResult";
 import { ErrorBoundary } from "../ErrorBoundaries"
 
-import { connect } from 'react-redux';
-import * as FilmActions from '../../actions/fetchData';
-import { bindActionCreators } from 'redux';
-
-
 class HomePage extends Component {
   render() {
 
@@ -24,7 +19,5 @@ class HomePage extends Component {
     );
   }
 }
-
-
 
 export default HomePage;

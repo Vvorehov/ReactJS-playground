@@ -6,7 +6,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import {store, persistor} from './store.js';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react'
-import {getDataSorted} from './actions/fetchData.js';
 import HomePage from '../src/scenes/HomePage/HomePage';
 import FilmPage from '../src/scenes/FilmPage/FilmPage';
 import SearchPage from '../src/scenes/SearchPage/SearchPage';
