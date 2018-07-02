@@ -1,0 +1,42 @@
+.film-item {
+    display: block;
+    max-width: 100%;
+    margin-bottom: 2rem;
+    color: #BDBBBE;
+    font-size: 8px;
+}
+
+.film-item_img {
+    display: block;
+    width: 100%;
+}
+
+.film-item__header {
+    position: relative;
+    padding: 1rem 0;
+    padding-right: 7rem;
+    margin-bottom: 1rem;
+}
+
+.film-item__name {
+    font-size: 1.6rem;
+    line-height: 1.5;
+    font-weight: 700;
+}
+
+.film-item__year {
+    position: absolute;
+    top: 1rem;
+    right: 0;
+    width: 7rem;
+    font-size: 1.4rem;
+    line-height: 1.5;
+    text-align: center;
+    border: 1px solid #BDBBBE;
+}
+
+.film-item__genre {
+    display: block;
+    padding-top: 1rem;
+    font-size: 1.4rem;
+}
