@@ -6,7 +6,41 @@ import * as FetchData from "../../actions/fetchData";
 import { setSearchData } from "../../actions/searchByAction";
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 import './styles.scss';
+
+const Button = styled.button.attrs({
+  type: 'submit'
+})`
+    position: relative;
+    display: inline-block;
+    width: auto;
+    max-width: 100%;
+    font-size: inherit;
+    padding: .85em 3em;
+    line-height: 1;
+    border: 0;
+    outline: 0;
+    border-radius: 2px;
+    box-shadow: none;
+    text-align: center;
+    background-color: #ED5664;
+    color: #fff;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition-property: color, background;
+    transition-duration: .2s;
+    transition-timing-function: ease-out;
+    user-select: none;
+    appearance: none;
+    &:hover, &:active {
+    background-color: #e8283a;
+    }
+    &:focus {
+      outline: 1px solid rgba(237, 86, 100, 0.5);
+    }
+  }
+`;
 
 class Search extends Component {
   constructor(props) {
@@ -60,7 +94,8 @@ class Search extends Component {
                       <Radio name="searchBy" label="Genre" value="GENRES" onChange={this.handleOnChange} isChecked={this.state.searchBy.toLowerCase() === "GENRES".toLowerCase()}/>
                     </div>
                 </div>
-                <button className="search_submit" type="submit">Search</button>
+                {/*<button className="search_submit" type="submit">Search</button>*/}
+                <Button>Search</Button>
             </div>
         </form>
       )

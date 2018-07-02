@@ -6,9 +6,11 @@
       "modules": true
     }
   },
-  "plugins": [
-    "react"
-  ],
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "plugins": ["react", "jest"],
   "rules": {
     "max-len": [1, 120, 2],
     "prop-types": [2],
