@@ -9,3 +9,9 @@ $ npm run build:prod
 
 ##START TEST
 $ npm run test
+
+##START LINT
+$ npm run lint
+
+##START LINT FIX
+$ npm run lint:fix
